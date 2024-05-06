@@ -1,0 +1,73 @@
+pip install seaborn
+pip install matplotlib
+
+import numpy as np
+import pandas as pd
+from matplotlib import pyplot as plt 
+import seaborn as sns
+
+df = pd.read_csv(r'C:\Users\atulb\OneDrive\Desktop\HearDiseasesDataset.csv')
+df.head()
+
+df.describe()
+
+df.dtypes
+
+plt.hist(df['age'], bins = [20,30,40,50,60,70,80], edgecolor = 'black')
+plt.title('Age')
+
+plt.hist(df['trtbps'], bins = [90,100,110,120,130,140,150,160,170,180,190,200], edgecolor = 'black')
+plt.title('Resting Blood Pressure')
+
+plt.hist(df['chol'], bins = 7, edgecolor = 'black')
+plt.title('Cholesterol')
+
+plt.hist(df['thalachh'], bins = [70,80,90,100,110,120,130,140,150,160,170,180,190,200], edgecolor = 'black')
+plt.title('Max Heart Rate')
+
+plt.hist(df['oldpeak'], bins = 5, edgecolor = 'black')
+plt.title('ST Depression')
+
+plt.scatter(df['age'],df['trtbps'], s=30, c = '#b6eb7a', edgecolor = 'green', linewidth = 1, alpha = 0.8)
+plt.xlabel('Age')
+plt.ylabel('Resting Blood Pressure')
+plt.title('Age vs RBP')
+
+plt.scatter(df['age'],df['chol'], s=30, c = '#9bdeac', edgecolor = 'green', linewidth = 1, alpha = 0.8)
+plt.xlabel('Age')
+plt.ylabel('Cholesterol')
+plt.title('Age vs Cholesterol')
+
+plt.scatter(df['age'],df['thalachh'], s=30, c = '#b6eb7a', edgecolor = 'green', linewidth = 1, alpha = 0.8)
+plt.xlabel('Age')
+plt.ylabel('Max Heart Rate')
+plt.title('Age vs Max Heart Rate')
+
+plt.scatter(df['age'],df['oldpeak'], s=30, c = '#a8df65', edgecolor = 'green', linewidth = 1, alpha = 0.8)
+plt.xlabel('Age')
+plt.ylabel('ST depression')
+plt.title('Age vs ST depsression')
+
+sns.jointplot(x=df['chol'], y=df['trtbps'], data=df, kind="kde")
+
+sns.jointplot(x=df['thalachh'], y=df['chol'], data=df)
+
+plt.scatter(df['trtbps'],df['thalachh'], s=30, c = '#e2979c', edgecolor = 'red', linewidth = 1, alpha = 0.9)
+plt.xlabel('Resting Blood Pressure')
+plt.ylabel('Max Heart Rate')
+plt.title('RBP vs Max Heart Rate')
+
+plt.scatter(df['trtbps'],df['oldpeak'], s=30, c = '#c70039', edgecolor = 'red', linewidth = 1, alpha = 0.8)
+plt.xlabel('Resting Blood Pressure')
+plt.ylabel('ST Depression')
+plt.title('RBP vs ST Depression')
+
+plt.scatter(df['thalachh'],df['oldpeak'], s=40, c = '#ffbd69', edgecolor = 'orange', linewidth = 1, alpha = 1)
+plt.xlabel('Max Heart Rate')
+plt.ylabel('ST Depression')
+plt.title('Max Heart Rate vs ST Depression')
+
+sns.catplot(x='cp',y='output',data=df,kind='point', color = 'g')
+
+plt.figure( figsize = (10,10))
+sns.heatmap(df.corr(), annot = True)
