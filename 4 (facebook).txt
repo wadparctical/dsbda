@@ -1,0 +1,39 @@
+import pandas as pd
+import numpy as np 
+
+df=pd.read_csv(r'C:\Users\atulb\OneDrive\Desktop\Facebook Metric Dataset.csv',sep=';')
+df
+
+df.head()
+
+df.tail()
+
+df.info()
+
+df.isnull().sum()
+
+df1=df.loc[1:20,['Category','Lifetime Post Total Reach','Type','Total Interactions']]
+df1
+
+ df2=df.loc[30:50,['Post Month','Post Weekday','Post Hour','Lifetime Post Consumers']]
+df2
+
+df_row=pd.concat([df1,df2])
+df_row
+
+df.shape
+
+df.melt()
+
+df.transpose()
+
+ df1.transpose()
+
+df2.transpose()
+
+df.sort_values(by='Category')
+
+df.sort_index()
+
+res_shaping = np.array([1,2,3,4,5,6,7,8,9,10])
+res_shaping.reshape(5,2)
